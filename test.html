@@ -1,0 +1,48 @@
+<script src="processing.js"></script>      
+<script type="application/processing" data-processing-target="pjs">
+
+// the starting size for the sun
+var sunSize = 5; 
+var counter = 10;
+boolean increase = true;
+var startSize = 0;
+var maxSize =800;
+
+      void setup() {
+        size(maxSize, maxSize);
+        background(82, 222, 240);
+        ellipse(200, 200, 25, 25);
+        println('hello web!');
+		
+      }
+	  frameRate(30);
+	  noStroke();
+// the beautiful blue sky
+
+
+
+draw = function() {
+	if(increase){
+		sunSize= sunSize + counter ;
+	}else{
+		sunSize = sunSize - counter;
+	}
+	if (sunSize > maxSize){
+		increase = false;
+	}
+	if (sunSize < startSize){
+		increase = true;
+	}
+	
+    background(82, 222, 240);
+
+    // The sun, a little circle on the horizon
+    fill(255, 204, 0);
+    ellipse(400, 698, sunSize, sunSize);
+
+    // The land, blocking half of the sun
+    fill(76, 168, 67);
+    rect(maxSize - maxSize, maxSize - 100, maxSize, maxSize - 500);
+};
+  </script>
+     <canvas id="pjs"> </canvas>
